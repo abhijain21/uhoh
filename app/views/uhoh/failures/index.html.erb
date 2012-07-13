@@ -1,0 +1,11 @@
+<h1>Failures#index</h1>
+<p>Find me in app/views/uhoh/failures/index.html.erb</p>
+
+<ul>
+	<% for failure in @failures %>
+	<li><%= failure.message %></li>
+	<% end %>
+</ul>
+
+<p><%= link_to "Failures" , root_url %></p>
+<p><%= link_to "Simulate Exception" , main_app.simulate_failure_path %></p>
