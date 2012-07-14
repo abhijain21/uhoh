@@ -1,4 +1,3 @@
-# desc "Explaining what the task does"
-# task :uhoh do
-#   # Task goes here
-# end
+task :put => :environment do 
+	puts "first rake task!"
+end
