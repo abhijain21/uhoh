@@ -1,11 +1,22 @@
-<h1>Failures#index</h1>
-<p>Find me in app/views/uhoh/failures/index.html.erb</p>
+<%= image_tag "uhoh/error.png" %>
+<h1>UHOH Engine Home</h1>
+<p>Following is a list of previously tracked exceptions in the app.</p>
+<p>Click on the exception to hide it.</p>
 
 <ul>
+  <% if @failures.empty? %>
+  <li><%= "No exceptions are currently logged in the database.
+  Simulate Exception to generate a sample exception or Create your own exception message:" %></li>
+  <% else %>
 	<% for failure in @failures %>
-	<li><%= failure.message %></li>
-	<% end %>
+	<li><font color="red">Exception id: </font><%=failure.id.to_s()%><br/>
+            <font color="red">Exception Message:</font><%= failure.message %><br/>
+            <div style="text-align: right;"><%= link_to "Clear this", failure, :confirm => "Are you sure?",  method: :delete%></div>
+        </li>
+        <% end %>
+  <% end %>
 </ul>
 
-<p><%= link_to "Failures" , root_url %></p>
-<p><%= link_to "Simulate Exception" , main_app.simulate_failure_path %></p>
+<p><%= link_to "Engine Home" , root_url %></p>
+<p><%= link_to "Simulate an Exception" , "failures/sim", :target => "_blank"%> (Will open a new browser tab.)</p>
+<p><%= link_to "Log Exception Manually" , new_failure_path() %></p>
