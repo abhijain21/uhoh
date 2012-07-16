@@ -7,7 +7,6 @@ module Uhoh
     end
     def create
       @failure = Failure.new(params[:failure])
-      puts @failure.message
       respond_to do |f|
         if @failure.save
           @failures = Failure.all
